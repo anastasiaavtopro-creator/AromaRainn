@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зволожувач та аромадифузор Краплі дощу НЛО — Офіційний магазин</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --accent: #06b6d4;
+            --accent-light: #e0f2fe;
+            --dark: #0f172a;
+            --gray-bg: #f8fafc;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .header-top {
+            background: linear-gradient(135deg, var(--dark), #1e293b);
+            color: #fff;
+            padding: 8px 0;
+            font-size: 0.875rem;
+        }
+
+        .navbar {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .brand-logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .hero-section {
+            padding: 40px 0 60px;
+            background: radial-gradient(circle at top right, #f0f9ff 0%, #ffffff 60%);
+        }
+
+        .product-gallery {
+            position: relative;
+        }
+
+        .main-img-wrap {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: #fff;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            aspect-ratio: 1 / 1;
+        }
+
+        .main-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .badge-sale {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ef4444;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            z-index: 2;
+        }
+
+        .gallery-thumbs {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .thumb-item {
+            width: 75px;
+            height: 75px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fff;
+        }
+
+        .thumb-item.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+        }
+
+        .thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .price-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .current-price {
+            color: #ef4444;
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .save-tag {
+            background: #fef2f2;
+            color: #ef4444;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .timer-box {
+            background: #fff7ed;
+            border: 1px dashed #fdba74;
+            border-radius: var(--radius-md);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .timer-digits {
+            font-weight: 800;
+            color: #c2410c;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-order-main {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.25rem;
+            padding: 18px 30px;
+            border-radius: 50px;
+            border: none;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .btn-order-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.45);
+            color: #fff;
+        }
+
+        .feature-icon-box {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-light);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            height: 100%;
+        }
+
+        .order-form-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 35px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 25px 50px -12px rgba(2, 132, 199, 0.15);
+            position: relative;
+        }
+
+        .form-control, .form-select {
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+        }
+
+        .spec-table tr td {
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .spec-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .review-card {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        footer {
+            background: var(--dark);
+            color: #94a3b8;
+            padding: 40px 0 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Notice Bar -->
+    <div class="header-top text-center">
+        <div class="container">
+            🔥 <strong>АКЦІЯ ДНЯ:</strong> Знижка -33% на зволожувач НЛО. Відправка сьогодні Новою Поштою!
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar sticky-top">
+        <div class="container">
+            <a href="#" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="bi bi-droplet-fill"></i>
+                </div>
+                <span>AromaRain</span>
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <a href="#orderForm" class="btn btn-outline-primary rounded-pill px-4 btn-sm fw-bold">Замовити</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <!-- Product Gallery -->
+                <div class="col-lg-6">
+                    <div class="product-gallery">
+                        <div class="main-img-wrap">
+                            <span class="badge-sale">-33% ЗНИЖКА</span>
+                            <img id="mainImage" src="https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&q=80&w=800" alt="Зволожувач краплі дощу НЛО">
+                        </div>
+                        <div class="gallery-thumbs">
+                            <div class="thumb-item active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&q=80&w=800')">
+                                <img src="https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&q=80&w=200" alt="Упаковка та прилад">
+                            </div>
+                            <div class="thumb-item" onclick="changeImage(this, 'https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?auto=format&fit=crop&q=80&w=800')">
+                                <img src="https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?auto=format&fit=crop&q=80&w=200" alt="Дерев'яний дизайн">
+                            </div>
+                            <div class="thumb-item" onclick="changeImage(this, 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=800')">
+                                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=200" alt="Підсвічування">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Purchase Info -->
+                <div class="col-lg-6">
+                    <div class="mb-2">
+                        <span class="badge bg-info text-dark bg-opacity-10 text-primary border border-info border-opacity-25 px-3 py-2 rounded-pill fw-semibold">
+                            <i class="bi bi-star-fill text-warning me-1"></i> Хіт Продажів 2026
+                        </span>
+                    </div>
+                    <h1 class="fw-extrabold text-dark display-6 mb-3">Зволожувач / аромадифузор «Краплі дощу» з підсвічуванням, нічник НЛО</h1>
+                    
+                    <p class="text-muted mb-4 lead fs-6">
+                        Унікальний пристрій для створення затишку та комфорту. Поєднує функціонал зволожувача, аромалампи з ефектом заспокійливого дощу та стильного нічника з RGB підсвічуванням.
+                    </p>
+
+                    <div class="price-card">
+                        <div class="d-flex align-items-baseline gap-2 mb-2">
+                            <span class="current-price">699 грн</span>
+                            <span class="old-price">1039 грн</span>
+                            <span class="save-tag">Економія 340 грн</span>
+                        </div>
+
+                        <div class="timer-box">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-clock-history text-warning fs-5"></i>
+                                <span class="small fw-semibold text-dark">До кінця акції залишилось:</span>
+                            </div>
+                            <div class="timer-digits" id="countdown">04:12:35</div>
+                        </div>
+                    </div>
+
+                    <a href="#orderForm" class="btn-order-main mb-3">
+                        <i class="bi bi-bag-check-fill"></i> Оформити замовлення
+                    </a>
+
+                    <div class="row g-2 text-center text-muted small mt-2">
+                        <div class="col-4">
+                            <i class="bi bi-truck text-primary fs-5 d-block mb-1"></i>
+                            Швидка доставка
+                        </div>
+                        <div class="col-4">
+                            <i class="bi bi-shield-check text-primary fs-5 d-block mb-1"></i>
+                            Оплата при отриманні
+                        </div>
+                        <div class="col-4">
+                            <i class="bi bi-arrow-counterclockwise text-primary fs-5 d-block mb-1"></i>
+                            Обмін / Повернення
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Advantages Grid -->
+    <section class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="text-center max-w-2xl mx-auto mb-5">
+                <h2 class="fw-bold">Чому варто обрати зволожувач НЛО?</h2>
+                <p class="text-muted">Інноваційний підхід до зволоження та ароматизації вашого дому</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="bi bi-cloud-rain"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Ефект заспокійливого дощу</h5>
+                        <p class="text-muted small mb-0">Імітація падаючих крапель створює атмосферу спокою, допомагає розслабитися після робочого дня та знімає стрес.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="bi bi-flower1"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Ароматерапія</h5>
+                        <p class="text-muted small mb-0">Додайте 2-5 крапель вашої улюбленої ефірної олії безпосередньо в резервуар для наповнення кімнати приємним ароматом.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">7 кольорів RGB підсвітки</h5>
+                        <p class="text-muted small mb-0">М'яке підсвічування дозволяє використовувати пристрій як затишний нічник для спальні або дитячої кімнати.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="bi bi-sliders"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Зручне керування</h5>
+                        <p class="text-muted small mb-0">У комплекті є пульт дистанційного керування, за допомогою якого легко змінювати режими на відстані.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="bi bi-volume-mute"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Безшумна робота</h5>
+                        <p class="text-muted small mb-0">Ультразвукова технологія забезпечує практично безшумну роботу навіть під час нічного сну.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="bi bi-gift"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Чудовий подарунок</h5>
+                        <p class="text-muted small mb-0">Оригінальний футуристичний дизайн у формі НЛО робить його ідеальним подарунком для близьких та колег.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Product Specs & Package -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-4">Технічні характеристики</h3>
+                    <table class="w-100 spec-table">
+                        <tr>
+                            <td class="text-muted">Тип зволожувача</td>
+                            <td class="fw-semibold text-end">Ультразвуковий / Аромадифузор</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Режими роботи</td>
+                            <td class="fw-semibold text-end">Зволоження + Ефект дощу + Нічник</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Підсвічування</td>
+                            <td class="fw-semibold text-end">7 кольорів RGB</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Керування</td>
+                            <td class="fw-semibold text-end">Кнопки на корпусі / Пульт дистанційного керування</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Живлення</td>
+                            <td class="fw-semibold text-end">Кабель живлення з адаптером</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Рівень шуму</td>
+                            <td class="fw-semibold text-end">Низький (&lt; 30 дБ)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-4">Комплектація замовлення</h3>
+                    <ul class="list-group list-group-flush rounded-3 border">
+                        <li class="list-group-item d-flex align-items-center gap-3 py-3">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            <span>Зволожувач / аромадифузор «Краплі дощу НЛО»</span>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center gap-3 py-3">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            <span>Пульт дистанційного керування</span>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center gap-3 py-3">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            <span>Кабель живлення з адаптером</span>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center gap-3 py-3">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            <span>Інструкція з експлуатації</span>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center gap-3 py-3">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            <span>Фірмова коробка</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="orderForm" class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="order-form-card">
+                        <div class="text-center mb-4">
+                            <span class="badge bg-danger mb-2">Акційна ціна 699 грн</span>
+                            <h2 class="fw-extrabold mb-1">Форма швидкого замовлення</h2>
+                            <p class="text-muted small">Заповніть дані нижче. Менеджер зателефонує вам для підтвердження!</p>
+                        </div>
+
+                        <form id="checkoutForm">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Прізвище, Ім'я, По батькові</label>
+                                    <input type="text" class="form-control" id="custName" placeholder="Шевченко Тарас Григорович" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Номер телефону</label>
+                                    <input type="tel" class="form-control" id="custPhone" placeholder="+380 (99) 000-00-00" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Місто доставки</label>
+                                    <input type="text" class="form-control" id="custCity" placeholder="напр. Київ" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Відділення або поштомат Нової Пошти</label>
+                                    <input type="text" class="form-control" id="custPost" placeholder="напр. Відділення №12 або Поштомат №54321" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Спосіб оплати</label>
+                                    <select class="form-select" id="payMethod">
+                                        <option value="Накладений платіж (при отриманні)">Оплата при отриманні (накладений платіж)</option>
+                                        <option value="Оплата на картку">Оплата на картку</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-order-main mt-4" id="submitBtn">
+                                <i class="bi bi-send-fill"></i> Підтвердити замовлення (699 грн)
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-1 fw-bold text-white">AromaRain — Зволожувачі та Аромадифузори</p>
+            <p class="small mb-0">Всі права захищені © 2026. Доставка по всій Україні через Нову Пошту.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Конфігурація Telegram бота
+        const CONFIG = {
+            telegramToken: '8997950101:AAHQ8fq_zuRZEBo1zSKKjOyFjyU0-cv4QR8', 
+            telegramChatId: '659970171',
+            price: 699,
+            productName: 'Зволожувач/аромадифузор "Краплі дощу" НЛО'
+        };
+
+        // Переключення фотографій у галереї
+        function changeImage(element, src) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.thumb-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Таймер зворотного відліку
+        function startTimer(durationInSeconds, displayElement) {
+            let timer = durationInSeconds;
+            setInterval(function () {
+                let hours = parseInt(timer / 3600, 10);
+                let minutes = parseInt((timer % 3600) / 60, 10);
+                let seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                displayElement.textContent = hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = durationInSeconds;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            const display = document.getElementById('countdown');
+            startTimer(15155, display);
+        };
+
+        // Обробка відправки форми у Telegram
+        document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Відправка замовлення...';
+
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const city = document.getElementById('custCity').value;
+            const post = document.getElementById('custPost').value;
+            const pay = document.getElementById('payMethod').value;
+
+            const text = `🛍️ *НОВЕ ЗАМОВЛЕННЯ СAЙТУ!*\n\n` +
+                         `📦 *Товар:* ${CONFIG.productName}\n` +
+                         `💰 *Сума:* ${CONFIG.price} грн\n\n` +
+                         `👤 *ПІБ:* ${name}\n` +
+                         `📞 *Телефон:* ${phone}\n` +
+                         `🏙️ *Місто:* ${city}\n` +
+                         `📦 *Відділення:* ${post}\n` +
+                         `💳 *Оплата:* ${pay}`;
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${CONFIG.telegramToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CONFIG.telegramChatId,
+                        text: text,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.ok) {
+                    alert('Дякуємо! Ваше замовлення успішно прийнято. Менеджер зв\'яжеться з вами найближчим часом.');
+                    document.getElementById('checkoutForm').reset();
+                } else {
+                    alert('Помилка при відправці замовлення. Перевірте налаштування бота.');
+                }
+            } catch (err) {
+                alert('Невдалося відправити замовлення. Перевірте з'єднання з інтернетом.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="bi bi-send-fill"></i> Підтвердити замовлення (699 грн)';
+            }
+        });
+    </script>
+</body>
+</html>
